@@ -5,4 +5,7 @@ from django.db import models
 class RegisterUser(models.Model):
     first_name = models.CharField(max_length=36)
     middle_name = models.CharField(max_length=36)
-    last_name = 
+    last_name = models.CharField(max_length=36)
+    password =models.CharField()
+    username =  models.CharField(unique=True)
+    e_mail = models.EmailField(unique=True)
