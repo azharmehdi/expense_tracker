@@ -7,4 +7,9 @@ class UserRegister(serializers.ModelSerializer):
         model = RegisterUser
         fields = ['first_name','middle_name','last_name','email','password','username']
 
+    def validate_first_name(self,value):
+        if not value.isalpha():
+            raise serializers.ValidationError ("First name must contain only letters")
+        return value
+        
     
