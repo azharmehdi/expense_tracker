@@ -17,4 +17,7 @@ class UserRegister(serializers.ModelSerializer):
             raise serializers.ValidationError('Middle name must contain only letters')
         return value
     
-    
+    def validate_last_name(self,value):
+        if not value.isalpha():
+            raise serializers.ValidationError('Last name must contain only letters')
+        return value
