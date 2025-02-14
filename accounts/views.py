@@ -27,14 +27,10 @@ def login(request):
     if user is None:
         return Response ({
             "error":"invalid credentials"
-        }, status.HTTP_4001_Unauthorized)
-    
-    
-    if user.is_authenticated():
-        refresh = RefreshToken.for_user(user)
-    
-    return Response ({
-        "message":str(refresh),
-        "access":str(refresh.access_token)
-    },status = status.HTTP_201_OK)
+        }, status.HTTP_401_Unauthorized)
+    refresh = RefreshToken.for_user(user)
 
+    return Response({
+        "refresh": str(refresh),
+        "access": str(refresh.access_token),
+    }, status=status.HTTP_201_OK)
