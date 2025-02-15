@@ -6,7 +6,7 @@ from .serializers import UserRegister
 from rest_framework_simplejwt.tokens import RefreshToken
 
 @api_view(['POST'])
-def register_user(request):
+def register(request):
     serializer = UserRegister(data = request.data)
     if serializer.is_valid():
         serializer.save()
